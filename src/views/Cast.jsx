@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as apiFilms from '../service/apiFilms';
+import DefaultImg from '../portrait-placeholder.png';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -14,18 +15,18 @@ export default function Cast() {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className="List CastList">
       {castArr &&
         castArr.map(actor => {
           return (
-            <li key={actor.id}>
+            <li key={actor.id} className="CastListItem">
               {actor.profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
                   alt={actor.name}
                 />
               ) : (
-                <img src="" alt="no photos" />
+                <img src={DefaultImg} alt="no photos" width="200" />
               )}
 
               <p>

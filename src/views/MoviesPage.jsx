@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -7,6 +7,8 @@ import * as apiFilms from '../service/apiFilms';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
 
   const [searchName, setSearchName] = useState('');
   const [movies, setMovies] = useState([]);
@@ -34,13 +36,15 @@ export default function MoviesPage() {
     }
     apiFilms.SearchMovies(searchName).then(res => setMovies(res));
     setSearchName('');
+
+    history.push({...location, 
+      search: `query=${searchName}`})
   };
 
   return (
     <>
       <form className="SearchForm" onSubmit={handleSubmit}>
         <input
-          className="SearchForm-input"
           type="text"
           autoComplete="off"
           autoFocus
@@ -48,11 +52,11 @@ export default function MoviesPage() {
           value={searchName}
           onChange={handleNameChange}
         />
-        <button type="submit" className="SearchForm-button">
-          <span className="SearchForm-button-label">Search</span>
+        <button type="submit" className="Btn">
+          <span>&#128269; Search</span>
         </button>
       </form>
-      <ul>
+      <ul className="List">
         {movies &&
           movies.map(movie => {
             return (

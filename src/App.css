@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Btn {
+  margin: 10px;
+  padding: 5px 15px;
+
+  background-color: rgb(223, 223, 223);
+  border: none;
+  box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Btn:hover,
+.Btn:focus {
+  background-color: cornflowerblue;
+  color: indigo;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Search form*/
+.SearchForm {
+  margin: 20px 10px;
+}
+.SearchFormButton {
+  margin-left: 10px;
+}
+
+/* Home page*/
+
+.Title {
+  margin: 10px;
+}
+
+.List {
+  list-style: none;
+}
+
+/* Movie Deatails Page*/
+
+.Content {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 10px 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.ContentDesc {
+  margin: auto 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Cast*/
+
+.CastList{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CastListItem{
+  margin: 10px;
+  width: 200px;
 }

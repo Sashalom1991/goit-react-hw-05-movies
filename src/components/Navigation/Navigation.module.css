@@ -1,0 +1,22 @@
+.Nav{
+    padding: 20px 10px;
+    box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+}
+
+.NavLink{
+    font-size: 25px;
+    color: #000;
+    text-decoration: none;
+}
+
+.NavLink:not(:last-child){
+    margin-right: 10px;
+}
+
+.NavLink:focus, .NavLink:hover{
+    text-decoration: underline;
+}
+
+.NavLinkAct {
+    color: red;
+}

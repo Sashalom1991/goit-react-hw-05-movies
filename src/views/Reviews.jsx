@@ -15,7 +15,7 @@ export default function Reviews() {
 
   console.log(reviews)
   return (<>
-    {reviews.length > 0 ? (<ul>
+    {reviews.length > 0 ? (<ul className="List">
         {reviews.map( review => { return(
             <li key={review.id}>
             <p><b>Author</b> {review.author}</p>
