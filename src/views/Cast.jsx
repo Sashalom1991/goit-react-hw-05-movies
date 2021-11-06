@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import * as apiFilms from '../service/apiFilms';
+import * as apiFilms from '../service/apiMovies';
 import DefaultImg from '../portrait-placeholder.png';
 
 export default function Cast() {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
-import * as apiFilms from '../service/apiFilms';
+import * as apiFilms from '../service/apiMovies';
 
 export default function HomePage() {
   const [topMovies, setTopMovies] = useState(null);

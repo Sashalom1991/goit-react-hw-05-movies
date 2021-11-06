@@ -2,7 +2,7 @@ import { useParams, useRouteMatch } from 'react-router';
 import { useEffect, useState, Suspense, lazy } from 'react';
 import { Link, Route, useLocation, useHistory } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import * as apiFilms from '../service/apiFilms';
+import * as apiFilms from '../service/apiMovies';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 // import Cast from './Cast';
 // import Reviews from './Reviews';
