@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
+import qs from 'query-string';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -7,21 +8,20 @@ import * as apiFilms from '../service/apiMovies';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
+  const { search } = useLocation();
   const history = useHistory();
   const location = useLocation();
 
-  const [searchName, setSearchName] = useState('');
+  const [searchName, setSearchName] = useState(qs.parse(search)?.query || '');
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     if (searchName === '') {
       return;
     }
-    apiFilms.SearchMovies(searchName).then(res => {
-      console.log(res);
-      setMovies(res);
-    });
-    searchName('');
+
+    apiFilms.SearchMovies(searchName).then(res => setMovies(res));
+    setSearchName('');
   }, []);
 
   const handleNameChange = e => {
@@ -37,8 +37,7 @@ export default function MoviesPage() {
     apiFilms.SearchMovies(searchName).then(res => setMovies(res));
     setSearchName('');
 
-    history.push({...location, 
-      search: `query=${searchName}`})
+    history.push({ ...location, search: `query=${searchName}` });
   };
 
   return (
@@ -61,7 +60,16 @@ export default function MoviesPage() {
           movies.map(movie => {
             return (
               <li key={movie.id}>
-                <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+                <Link
+                  to={{
+                    pathname: `${url}/${movie.id}`,
+                    state: {
+                      from: location,
+                    },
+                  }}
+                >
+                  {movie.title}
+                </Link>
               </li>
             );
           })}

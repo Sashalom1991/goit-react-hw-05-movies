@@ -7,7 +7,6 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 // import Cast from './Cast';
 // import Reviews from './Reviews';
 
-
 const Cast = lazy(() => import('./Cast.jsx') /* webpackChunkName: "cast" */);
 const Reviews = lazy(() =>
   import('./Reviews.jsx' /* webpackChunkName: "reviews" */),
@@ -15,7 +14,7 @@ const Reviews = lazy(() =>
 
 export default function MovieDetailsPage() {
   const { url, path } = useRouteMatch();
-  const { state } = useLocation();
+  const location = useLocation();
   const history = useHistory();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -47,7 +46,7 @@ export default function MovieDetailsPage() {
           </div>
         </div>
       )}
-      <hr/>
+      <hr />
       <div>
         <h4 className="Title">Addictional information</h4>
         <ul className="List">
@@ -56,11 +55,9 @@ export default function MovieDetailsPage() {
               to={{
                 pathname: `${url}/cast`,
                 state: {
-                  backUrl: state?.backUrl || '/',
-                  query: state?.query || '',
+                  from: location,
                 },
               }}
-              
             >
               Cast
             </Link>
@@ -70,8 +67,7 @@ export default function MovieDetailsPage() {
               to={{
                 pathname: `${url}/reviews`,
                 state: {
-                  backUrl: state?.backUrl || '/',
-                  query: state?.query || '',
+                  from: location,
                 },
               }}
             >
